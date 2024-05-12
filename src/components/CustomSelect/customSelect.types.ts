@@ -4,6 +4,7 @@ export type CustomSelectOptionType = {
 };
 
 export type CustomOptionType = {
+  key: string;
   value: string;
   children: string;
   selected?: boolean;
