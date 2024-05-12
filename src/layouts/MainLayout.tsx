@@ -13,18 +13,23 @@ export const MainLayout = () => {
           <CustomOption key="placeholder" value={""} selected>
             -- Please, select an option --
           </CustomOption>
+
           <CustomOption
             key={selectOptions[0].value}
             value={selectOptions[0].value}
           >
             {selectOptions[0].label}
           </CustomOption>
+
+          <div>Non valid option because is not a CustomOption element</div>
+
           <CustomOption
             key={selectOptions[1].value}
             value={selectOptions[1].value}
           >
             {selectOptions[1].label}
           </CustomOption>
+
           <CustomOption
             key={selectOptions[2].value}
             value={selectOptions[2].value}
@@ -32,6 +37,7 @@ export const MainLayout = () => {
           >
             {selectOptions[2].label}
           </CustomOption>
+
           <CustomOption
             key={selectOptions[3].value}
             value={selectOptions[3].value}

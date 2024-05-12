@@ -3,6 +3,7 @@ import { ExpandIcon } from "../../assets/icons/ExpandIcon";
 import "./customSelect.css";
 import { CustomOptionType, CustomSelectOptionType } from "./customSelect.types";
 import { useHideDropdownOnClickOut } from "./hooks/useHideDropdownOnClickOut";
+import { CustomOption } from "./CustomOption";
 
 type CustomSelectProps = {
   onChange?: (val: string) => void;
@@ -20,7 +21,16 @@ const SelectChildrenWithProps = ({
   selectedOption,
   children,
 }: SelectChildrenWithPropsType) => {
-  return children.map((child) =>
+  function isCustomOptionType(
+    child: ReactElement<
+      CustomOptionType,
+      string | React.JSXElementConstructor<unknown>
+    >
+  ): child is ReactElement<CustomOptionType> {
+    return child.type === CustomOption;
+  }
+  const validChildren = children.filter((child) => isCustomOptionType(child));
+  return validChildren.map((child) =>
     cloneElement(child, { onSelectOption, selectedOption })
   );
 };
