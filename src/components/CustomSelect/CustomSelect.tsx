@@ -5,6 +5,7 @@ import { CustomOptionType, CustomSelectOptionType } from "./customSelect.types";
 import { useHideDropdownOnClickOut } from "./hooks/useHideDropdownOnClickOut";
 
 type CustomSelectProps = {
+  onChange?: (val: string) => void;
   children: ReactElement<CustomOptionType>[];
 };
 
@@ -24,13 +25,14 @@ const SelectChildrenWithProps = ({
   );
 };
 
-export const CustomSelect = ({ children }: CustomSelectProps) => {
+export const CustomSelect = ({ onChange, children }: CustomSelectProps) => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [currentOption, setCurrentOption] = useState<CustomSelectOptionType>();
 
   const { dropdownRef } = useHideDropdownOnClickOut(setIsDropdownVisible);
 
   useEffect(() => {
+    currentOption && onChange && onChange(currentOption.value);
     setIsDropdownVisible(false);
   }, [currentOption]);
 
