@@ -1,0 +1,15 @@
+.custom-select__container {
+  border: 1px solid rgb(118, 118, 118);
+  height: 2rem;
+  width: 20rem;
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+}
+
+.custom-select__input {
+  width: 100%;
+  font-size: medium;
+  display: flex;
+  justify-content: space-between;
+}

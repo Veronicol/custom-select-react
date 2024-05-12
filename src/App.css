@@ -5,7 +5,23 @@
   text-align: center;
 }
 
-.card {
+.main-layout__container {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+.custom-select__container {
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30em;
   padding: 2em;
 }
 
+.select-result {
+  padding: 2em;
+  font-size: x-large;
+}
