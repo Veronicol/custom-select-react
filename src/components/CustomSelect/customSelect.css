@@ -36,3 +36,14 @@
   padding: 0.2em 1em;
   margin: 0 .5em;
 }
+
+.custom-select__option__selected {
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-select__option__non-selected {
+  width: 24px;
+}
