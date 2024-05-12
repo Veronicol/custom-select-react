@@ -1,11 +1,8 @@
 import "./App.css";
+import { MainLayout } from "./layouts/MainLayout";
 
 function App() {
-  return (
-    <div>
-      <h1>Custom Select Input</h1>
-    </div>
-  );
+  return <MainLayout />;
 }
 
 export default App;
