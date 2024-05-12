@@ -4,7 +4,7 @@
   width: 20rem;
   padding: .5rem;
   display: flex;
-  align-items: center;
+  position: relative;
 }
 
 .custom-select__input {
@@ -12,4 +12,27 @@
   font-size: medium;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.custom-select__dropdown {
+  width: 21rem;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: .3em;
+  background-color: rgb(240, 240, 240);
+  position: absolute;
+  top: .2em;
+  left: -.5em;
+  padding: .2em 0;
+}
+
+.custom-select__dropdown__hidden {
+  display: none;  
+  }
+
+.custom-select__option {
+  display: flex;
+  align-items: center;
+  padding: 0.2em 1em;
+  margin: 0 .5em;
 }

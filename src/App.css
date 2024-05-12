@@ -11,7 +11,7 @@
   justify-content: space-around;
 }
 
-.custom-select__container {
+.custom-select__section {
   border: 1px solid rgb(220, 220, 220);
   border-radius: 1em;
   display: flex;

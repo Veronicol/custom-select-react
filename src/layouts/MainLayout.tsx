@@ -5,8 +5,10 @@ export const MainLayout = () => {
     <div className="main-layout__container">
       <div className="custom-select__section">
         <h1>Custom Select Input</h1>
-        <CustomSelect />
-        <CustomOption />
+        <CustomSelect>
+          <CustomOption>Option 1</CustomOption>
+          <CustomOption>Option 2</CustomOption>
+        </CustomSelect>
         <div className="select-result">Selected option is XXX</div>
       </div>
     </div>
