@@ -5,7 +5,8 @@ import { DoneIcon } from "../../assets/icons/DoneIcon";
 export const CustomOption = ({
   value,
   children,
-  selected,
+  selected = false,
+  disabled = false,
   onSelectOption,
   selectedOption,
 }: CustomOptionType) => {
@@ -30,11 +31,18 @@ export const CustomOption = ({
   }, [selectedOption?.value]);
 
   const onCustomOptionClick = () => {
-    onSelectOption && onSelectOption(currentOption);
+    !disabled && onSelectOption && onSelectOption(currentOption);
   };
 
   return (
-    <div className="custom-select__option" onClick={onCustomOptionClick}>
+    <div
+      className={`custom-select__option ${
+        disabled
+          ? "custom-select__option__disabled"
+          : "custom-select__option__active"
+      }`}
+      onClick={onCustomOptionClick}
+    >
       {isSelected ? (
         <DoneIcon />
       ) : (

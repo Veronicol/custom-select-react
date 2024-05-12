@@ -25,6 +25,7 @@ export const MainLayout = () => {
           <CustomOption
             key={selectOptions[2].value}
             value={selectOptions[2].value}
+            disabled
           >
             {selectOptions[2].label}
           </CustomOption>

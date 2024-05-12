@@ -8,6 +8,7 @@ export type CustomOptionType = {
   value: string;
   children: string;
   selected?: boolean;
+  disabled?: boolean;
   onSelectOption?: (value: CustomSelectOptionType) => void;
   selectedOption?: CustomSelectOptionType;
 };

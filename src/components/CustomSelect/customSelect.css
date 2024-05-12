@@ -37,11 +37,25 @@
   margin: 0 .5em;
 }
 
+.custom-select__option__disabled {
+  color: rgb(180, 180, 180)
+}
+
+.custom-select__option__active:hover {
+  border-radius: .5em;
+  background-color: rgb(66, 145, 248);
+  color: white;
+}
+
 .custom-select__option__selected {
   width: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.custom-select__option__selected:hover {
+  color: white;
 }
 
 .custom-select__option__non-selected {

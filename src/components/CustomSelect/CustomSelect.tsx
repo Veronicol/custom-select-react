@@ -1,4 +1,4 @@
-import { ReactElement, cloneElement, useState } from "react";
+import { ReactElement, cloneElement, useEffect, useState } from "react";
 import { ExpandIcon } from "../../assets/icons/ExpandIcon";
 import "./customSelect.css";
 import { CustomOptionType, CustomSelectOptionType } from "./customSelect.types";
@@ -29,6 +29,10 @@ export const CustomSelect = ({ children }: CustomSelectProps) => {
   const [currentOption, setCurrentOption] = useState<CustomSelectOptionType>();
 
   const { dropdownRef } = useHideDropdownOnClickOut(setIsDropdownVisible);
+
+  useEffect(() => {
+    setIsDropdownVisible(false);
+  }, [currentOption]);
 
   return (
     <div className="custom-select__container">
