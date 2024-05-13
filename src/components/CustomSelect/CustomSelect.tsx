@@ -1,9 +1,10 @@
-import { ReactElement, cloneElement, useEffect, useState } from "react";
+import { ReactElement, cloneElement } from "react";
 import { ExpandIcon } from "../../assets/icons/ExpandIcon";
 import "./customSelect.css";
 import { CustomOptionType, CustomSelectOptionType } from "./customSelect.types";
 import { useHideDropdownOnClickOut } from "./hooks/useHideDropdownOnClickOut";
 import { CustomOption } from "./CustomOption";
+import { useCustomSelect } from "./hooks/useCustomSelect";
 
 type CustomSelectProps = {
   onChange?: (val: string) => void;
@@ -36,15 +37,18 @@ const SelectChildrenWithProps = ({
 };
 
 export const CustomSelect = ({ onChange, children }: CustomSelectProps) => {
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const [currentOption, setCurrentOption] = useState<CustomSelectOptionType>();
+  const initialState = {
+    isDropdownVisible: false,
+  };
 
-  const { dropdownRef } = useHideDropdownOnClickOut(setIsDropdownVisible);
+  const {
+    currentOption,
+    isDropdownVisible,
+    changeOption,
+    toggleDropdownVisibility,
+  } = useCustomSelect(initialState, onChange);
 
-  useEffect(() => {
-    currentOption && onChange && onChange(currentOption.value);
-    setIsDropdownVisible(false);
-  }, [currentOption]);
+  const { dropdownRef } = useHideDropdownOnClickOut(toggleDropdownVisibility);
 
   return (
     <div className="custom-select__container">
@@ -52,7 +56,7 @@ export const CustomSelect = ({ onChange, children }: CustomSelectProps) => {
         className="custom-select__input"
         onClick={(event) => {
           event.stopPropagation();
-          setIsDropdownVisible(!isDropdownVisible);
+          toggleDropdownVisibility(!isDropdownVisible);
         }}
       >
         <div>{currentOption?.label}</div>
@@ -68,7 +72,7 @@ export const CustomSelect = ({ onChange, children }: CustomSelectProps) => {
           }
         >
           <SelectChildrenWithProps
-            onSelectOption={setCurrentOption}
+            onSelectOption={changeOption}
             selectedOption={currentOption}
           >
             {children}
