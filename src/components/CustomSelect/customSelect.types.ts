@@ -11,4 +11,5 @@ export type CustomOptionType = {
   disabled?: boolean;
   onSelectOption?: (value: CustomSelectOptionType) => void;
   selectedOption?: CustomSelectOptionType;
+  dataTestId?: string;
 };

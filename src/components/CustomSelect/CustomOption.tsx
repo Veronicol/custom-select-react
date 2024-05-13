@@ -9,6 +9,7 @@ export const CustomOption = ({
   disabled = false,
   onSelectOption,
   selectedOption,
+  dataTestId,
 }: CustomOptionType) => {
   const currentOption: CustomSelectOptionType = {
     value,
@@ -36,6 +37,7 @@ export const CustomOption = ({
 
   return (
     <div
+      data-testid={dataTestId}
       className={`custom-select__option ${
         disabled
           ? "custom-select__option__disabled"

@@ -31,9 +31,10 @@ const SelectChildrenWithProps = ({
     return child.type === CustomOption;
   }
   const validChildren = children.filter((child) => isCustomOptionType(child));
-  return validChildren.map((child) =>
-    cloneElement(child, { onSelectOption, selectedOption })
-  );
+  return validChildren.map((child, idx) => {
+    const dataTestId = `custom-select-option-${idx}`;
+    return cloneElement(child, { onSelectOption, selectedOption, dataTestId });
+  });
 };
 
 export const CustomSelect = ({ onChange, children }: CustomSelectProps) => {
@@ -51,7 +52,7 @@ export const CustomSelect = ({ onChange, children }: CustomSelectProps) => {
   const { dropdownRef } = useHideDropdownOnClickOut(toggleDropdownVisibility);
 
   return (
-    <div className="custom-select__container">
+    <div className="custom-select__container" data-testid="custom-select">
       <div
         className="custom-select__input"
         onClick={(event) => {
@@ -65,6 +66,7 @@ export const CustomSelect = ({ onChange, children }: CustomSelectProps) => {
       {children && (
         <div
           ref={dropdownRef}
+          data-testid="custom-select-dropdown"
           className={
             isDropdownVisible
               ? "custom-select__dropdown"
